@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry – The Artisan Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>The Artisan Bakery</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Custom Order Enquiry</h2>
+        <p>Fill in the form below for personalised cakes, event catering, or bulk orders.</p>
+
+        <form action="#" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="order-type">Order Type:</label>
+            <select id="order-type" name="order-type">
+                <option value="cake">Celebration Cake</option>
+                <option value="pastries">Pastry Platter</option>
+                <option value="bread">Bread Basket</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="message">Message / Details:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Describe your requirements..."></textarea>
+
+            <button type="submit">Send Enquiry</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
