@@ -288,8 +288,8 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ===== RESPONSIVE TWEAKS ===== */
-@media (max-width: 700px) {
+    /* ===== RESPONSIVE TWEAKS ===== */
+    @media (max-width: 700px) {
     header {
         flex-direction: column;
         align-items: center;
@@ -307,5 +307,66 @@ footer a:hover {
     }
     .product-category ul {
         justify-content: center;
+    }
+
+    /* ===== BRAND (Logo + Title) ===== */
+    .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo-link img {
+        display: block;
+        height: 60px;
+        width: auto;
+    }
+
+    .site-title {
+        font-family: 'Playfair Display', 
+        Georgia, serif;
+        font-size: 1.8rem;
+        color: #fff;
+        margin: 0;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    /* ===== NAV MENU ===== */
+    .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+
+    .nav-menu a:hover {
+        background: #FFC107;
+        color: #3E2723;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 700px) {
+        .nav-brand {
+            justify-content: center;
+            width: 100%;
+        }
+        .site-title {
+            font-size: 1.4rem;
+        }
+    }
+
+    img {
+    max-width: 100%;
+    height: auto;
     }
 }
