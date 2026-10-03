@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout – The Artisan Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="nav-brand">
+        <a href="index.html" class="logo-link">
+            <img src="images/artisan-bakery-logo.jpg" alt="The Artisan Bakery Logo" width="100" height="100">
+        </a>
+        <h1 class="site-title">The Artisan Bakery</h1>
+    </div>
+    <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+    <nav>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Checkout</h2>
+
+    <div id="checkout-summary"></div>
+
+    <h3>Your Details</h3>
+    <form id="checkout-form" action="#" method="post" novalidate>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error-msg" id="name-error"></span>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-msg" id="email-error"></span>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <span class="error-msg" id="phone-error"></span>
+
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+        <span class="error-msg" id="address-error"></span>
+
+        <button type="submit">Place Order</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
