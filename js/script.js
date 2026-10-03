@@ -26,19 +26,32 @@ window.onload = function () {
         greetingBox.innerHTML = greeting;
     }
 
-    // ==============================
-    // 2. MOBILE MENU TOGGLE
-    // ==============================
+            // HAMBURGER MENU
     var menuButton = document.getElementById("menu-button");
     var navMenu = document.getElementById("nav-menu");
 
     if (menuButton && navMenu) {
-        menuButton.onclick = function () {
-            if (navMenu.style.display === "flex") {
-                navMenu.style.display = "none";
-            } else {
-                navMenu.style.display = "flex";
+        menuButton.onclick = function (e) {
+            e.stopPropagation();
+            navMenu.classList.toggle("show");
+        };
+
+        // Close when clicking outside
+        document.addEventListener("click", function (e) {
+            if (!navMenu.contains(e.target) && e.target !== menuButton) {
+                navMenu.classList.remove("show");
             }
+        });
+    }
+
+    // DROPDOWN TOGGLE (inside menu)
+    var dropdowns = document.getElementsByClassName("dropdown");
+    for (var d = 0; d < dropdowns.length; d++) {
+        var dropLink = dropdowns[d].querySelector("a");
+        dropLink.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.parentElement.classList.toggle("open");
         };
     }
 
@@ -442,5 +455,20 @@ window.onload = function () {
     // 12. UPDATE CART COUNT ON LOAD
     // ==============================
     updateCartCount();
+
+        // ==============================
+    // DROPDOWN MENU TOGGLE (mobile)
+    // ==============================
+    var dropdowns = document.getElementsByClassName("dropdown");
+    for (var d = 0; d < dropdowns.length; d++) {
+        var link = dropdowns[d].querySelector("a");
+        link.onclick = function (e) {
+            // Only toggle on mobile
+            if (window.innerWidth <= 700) {
+                e.preventDefault();
+                this.parentElement.classList.toggle("open");
+            }
+        };
+    }
 
 };
