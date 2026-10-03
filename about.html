@@ -16,25 +16,35 @@
         </a>
         <h1 class="site-title">The Artisan Bakery</h1>
     </div>
+
+    <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+
     <nav>
-    <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
-        <li><a href="enquiry.html">Enquiry</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="products.html">Products ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="breads.html">Breads</a></li>
+                    <li><a href="pastries.html">Pastries</a></li>
+                    <li><a href="cakes.html">Cakes</a></li>
+                </ul>
+            </li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
     <main>
         <h2>Our Story</h2>
         <section>
             <p>Founded in 2015 by John Smith, The Artisan Bakery started as a small neighbourhood oven and has grown into a beloved local institution. We believe in using only the finest ingredients – organic flour, free‑range eggs, and real butter – to create bread and pastries that nourish both body and soul.</p>
-            <p>Every loaf is hand‑shaped and baked in a stone‑deck oven, giving it that distinctive crust and airy crumb. Our team of skilled bakers works through the night to ensure you get the freshest goods every morning.</p>
-            <p>Beyond baking, we are committed to sustainability: we source locally, reduce food waste, and use eco‑friendly packaging.</p>
-            <p><img src="images/Bakery-Interior.jpg" alt="Inside The Artisan Bakery" width="600" height="350" style="border-radius:8px;"></p>
+<p>Every loaf is hand‑shaped and baked in a stone‑deck oven, giving it that distinctive crust and airy crumb. Our team of skilled bakers works through the night to ensure you get the freshest goods every morning.</p>
+<p>Beyond baking, we are committed to sustainability: we source locally, reduce food waste, and use eco‑friendly packaging.</p>
+<p><img src="images/Bakery-Interior.jpg" alt="Inside The Artisan Bakery" width="600" height="350" style="border-radius:8px;"></p>
         </section>
     </main>
 
@@ -42,5 +52,7 @@
         <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
     </footer>
 
+    <script src="js/script.js"></script>
+    
 </body>
 </html>

@@ -16,16 +16,26 @@
         </a>
         <h1 class="site-title">The Artisan Bakery</h1>
     </div>
+
+    <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+
     <nav>
-    <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
-        <li><a href="enquiry.html">Enquiry</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="products.html">Products ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="breads.html">Breads</a></li>
+                    <li><a href="pastries.html">Pastries</a></li>
+                    <li><a href="cakes.html">Cakes</a></li>
+                </ul>
+            </li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
     <main>
@@ -61,5 +71,7 @@
         <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
     </footer>
 
+    <script src="js/script.js"></script>
+    
 </body>
 </html>
