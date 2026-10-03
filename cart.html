@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart – The Artisan Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="nav-brand">
+        <a href="index.html" class="logo-link">
+            <img src="images/artisan-bakery-logo.jpg" alt="The Artisan Bakery Logo" width="100" height="100">
+        </a>
+        <h1 class="site-title">The Artisan Bakery</h1>
+    </div>
+    <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+    <nav>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <p class="cart-total" id="cart-total"></p>
+    <div style="text-align:right;">
+        <a href="checkout.html" class="checkout-btn" id="checkout-link">Proceed to Checkout</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
