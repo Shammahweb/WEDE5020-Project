@@ -169,14 +169,14 @@ The-Artisan-Bakery/
 6. Click Checkout to enter your details.
 
 ## How the Forms Work
-- The Enquiry form is for custom orders (cakes and catering).
+- The Enquiry form is for custom orders (cakes and     catering).
 - The Contact form is for general messages.
 - Both forms use JavaScript validation before submitting.
 
 ## Contact Details
 - Email: info@artisanbakery.co.za
 - Phone: +27 21 123 4567
-- Address: 123 Baker Street, Pretoria, 8001
+- Address:  239 Pretorius St, Pretoria Central, Pretoria, 0126
 
 ## References
 
