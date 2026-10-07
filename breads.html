@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breads – The Artisan Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="nav-brand">
+            <a href="index.html" class="logo-link">
+                <img src="images/artisan-bakery-logo.jpg" alt="The Artisan Bakery Logo" width="100" height="100">
+            </a>
+            <h1 class="site-title">The Artisan Bakery</h1>
+        </div>
+
+        <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="products.html">Products ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="breads.html">Breads</a></li>
+                        <li><a href="pastries.html">Pastries</a></li>
+                        <li><a href="cakes.html">Cakes</a></li>
+                    </ul>
+                </li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Breads</h2>
+        <p><a href="products.html">← Back to Products</a></p>
+
+        <input type="text" id="product-search" class="search-bar" placeholder="Search breads...">
+
+        <section class="product-category">
+            <ul>
+                <li>
+                    <strong>Sourdough</strong> – R35<br>
+                    <img src="images/sourdough.jpg" alt="Sourdough">
+                    <button class="add-cart-btn" data-name="Sourdough" data-price="35">Add to Cart</button>
+                </li>
+                <li>
+                    <strong>Rye</strong> – R30<br>
+                    <img src="images/rye.jpg" alt="Rye">
+                    <button class="add-cart-btn" data-name="Rye" data-price="30">Add to Cart</button>
+                </li>
+                <li>
+                    <strong>Ciabatta</strong> – R28<br>
+                    <img src="images/ciabatta.jpg" alt="Ciabatta">
+                    <button class="add-cart-btn" data-name="Ciabatta" data-price="28">Add to Cart</button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
+    </footer>
+
+    <script src="js/specials.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
