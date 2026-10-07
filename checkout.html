@@ -43,8 +43,38 @@
 
         <div id="checkout-summary"></div>
 
-        <h3>Your Details</h3>
         <form id="checkout-form" action="#" method="post" novalidate>
+
+            <h3>Delivery or Collection?</h3>
+
+            <div class="delivery-options">
+                <label class="radio-option">
+                    <input type="radio" name="fulfilment" value="delivery" checked>
+                    <span>Delivery</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="fulfilment" value="collection">
+                    <span>Collection (pick up at bakery)</span>
+                </label>
+            </div>
+
+            <div id="delivery-address-box">
+                <label for="address">Delivery Address:</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+                <span class="error-msg" id="address-error"></span>
+            </div>
+
+            <div id="collection-info" style="display: none;">
+                <p><strong>Pick up from:</strong> 123 Baker Street, Pretoria, 8001</p>
+                <p><strong>Opening hours:</strong> Mon–Fri 6:00–18:00, Sat 7:00–14:00</p>
+            </div>
+
+            <label for="order-time" id="order-time-label">Preferred Delivery Time:</label>
+            <input type="time" id="order-time" name="order-time">
+            <span class="error-msg" id="order-time-error"></span>
+
+            <h3>Your Details</h3>
+
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
             <span class="error-msg" id="name-error"></span>
@@ -57,11 +87,8 @@
             <input type="tel" id="phone" name="phone" required>
             <span class="error-msg" id="phone-error"></span>
 
-            <label for="address">Delivery Address:</label>
-            <textarea id="address" name="address" rows="3" required></textarea>
-            <span class="error-msg" id="address-error"></span>
-
             <button type="submit">Place Order</button>
+
         </form>
     </main>
 
