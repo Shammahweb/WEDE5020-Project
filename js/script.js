@@ -7,7 +7,68 @@
 window.onload = function () {
 
     // ==============================
-    // 1. DYNAMIC GREETING
+    // 1. ROTATING BACKGROUND IMAGES (every page)
+    // ==============================
+    var backgroundImages = [
+        "images/sourdough.jpg",
+        "images/croissant.jpg",
+        "images/chocolate brownie.jpg",
+        "images/celebration cake.jpg",
+        "images/pain au chocolate.jpg",
+        "images/cheesecake.jpg",
+        "images/carrot cake.jpg"
+    ];
+
+    var bgIndex = 0;
+
+    // Show first image immediately
+    document.body.style.backgroundImage = "url('" + backgroundImages[0] + "')";
+
+    // Rotate every 5 seconds
+    setInterval(function () {
+        bgIndex = bgIndex + 1;
+        if (bgIndex >= backgroundImages.length) {
+            bgIndex = 0;
+        }
+        document.body.style.backgroundImage = "url('" + backgroundImages[bgIndex] + "')";
+    }, 5000);
+
+    // ==============================
+    // 2. LOAD TODAY'S SPECIALS
+    // ==============================
+    var specialsGrid = document.getElementById("specials-grid");
+
+    if (specialsGrid) {
+        for (var s = 0; s < todaysSpecials.length; s++) {
+            var item = todaysSpecials[s];
+
+            var cardHTML = "";
+            cardHTML += "<img src='" + item.image + "' alt='" + item.name + "'>";
+            cardHTML += "<h3>" + item.name + "</h3>";
+            cardHTML += "<p class='special-price'>R" + item.price.toFixed(2) + "</p>";
+            cardHTML += "<p class='special-desc'>" + item.description + "</p>";
+            cardHTML += "<button class='add-cart-btn' data-name='" + item.name + "' data-price='" + item.price + "'>Add to Cart</button>";
+
+            var card = document.createElement("div");
+            card.className = "special-item";
+            card.innerHTML = cardHTML;
+
+            specialsGrid.appendChild(card);
+        }
+
+        var specialButtons = specialsGrid.getElementsByClassName("add-cart-btn");
+        for (var sb = 0; sb < specialButtons.length; sb++) {
+            specialButtons[sb].onclick = function () {
+                var name = this.getAttribute("data-name");
+                var price = parseFloat(this.getAttribute("data-price"));
+                addToCart(name, price);
+                alert(name + " has been added to your cart!");
+            };
+        }
+    }
+
+    // ==============================
+    // 3. DYNAMIC GREETING
     // ==============================
     var greetingBox = document.getElementById("greeting");
     if (greetingBox) {
@@ -26,7 +87,9 @@ window.onload = function () {
         greetingBox.innerHTML = greeting;
     }
 
-            // HAMBURGER MENU
+    // ==============================
+    // 4. HAMBURGER MENU TOGGLE
+    // ==============================
     var menuButton = document.getElementById("menu-button");
     var navMenu = document.getElementById("nav-menu");
 
@@ -36,7 +99,6 @@ window.onload = function () {
             navMenu.classList.toggle("show");
         };
 
-        // Close when clicking outside
         document.addEventListener("click", function (e) {
             if (!navMenu.contains(e.target) && e.target !== menuButton) {
                 navMenu.classList.remove("show");
@@ -44,7 +106,9 @@ window.onload = function () {
         });
     }
 
-    // DROPDOWN TOGGLE (inside menu)
+    // ==============================
+    // 5. DROPDOWN TOGGLE
+    // ==============================
     var dropdowns = document.getElementsByClassName("dropdown");
     for (var d = 0; d < dropdowns.length; d++) {
         var dropLink = dropdowns[d].querySelector("a");
@@ -56,34 +120,9 @@ window.onload = function () {
     }
 
     // ==============================
-    // 3. PRODUCT TABS
-    // ==============================
-    var tabButtons = document.getElementsByClassName("tab-btn");
-
-    if (tabButtons.length > 0) {
-        for (var i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].onclick = function () {
-                var panels = document.getElementsByClassName("tab-panel");
-                for (var j = 0; j < panels.length; j++) {
-                    panels[j].style.display = "none";
-                }
-
-                for (var k = 0; k < tabButtons.length; k++) {
-                    tabButtons[k].className = "tab-btn";
-                }
-
-                this.className = "tab-btn active";
-                var targetId = this.getAttribute("data-tab");
-                document.getElementById(targetId).style.display = "block";
-            };
-        }
-    }
-
-    // ==============================
-    // 4. LIGHTBOX GALLERY
+    // 6. LIGHTBOX GALLERY
     // ==============================
     var productImages = document.querySelectorAll(".product-category img");
-
     for (var m = 0; m < productImages.length; m++) {
         productImages[m].style.cursor = "pointer";
         productImages[m].onclick = function () {
@@ -120,7 +159,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // 5. PRODUCT SEARCH
+    // 7. PRODUCT SEARCH
     // ==============================
     var searchBox = document.getElementById("product-search");
     if (searchBox) {
@@ -140,7 +179,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // 6. SHOPPING CART - ADD ITEMS
+    // 8. SHOPPING CART - ADD TO CART
     // ==============================
     var addButtons = document.getElementsByClassName("add-cart-btn");
 
@@ -198,7 +237,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // 7. CART PAGE - DISPLAY ITEMS
+    // 9. CART PAGE DISPLAY
     // ==============================
     var cartContainer = document.getElementById("cart-items");
     if (cartContainer) {
@@ -221,7 +260,6 @@ window.onload = function () {
         if (checkoutLink) checkoutLink.style.display = "inline-block";
 
         var table = "<table class='cart-table'><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th>Action</th></tr>";
-
         var total = 0;
 
         for (var i = 0; i < cart.length; i++) {
@@ -249,7 +287,6 @@ window.onload = function () {
         }
     }
 
-    // Functions that buttons call
     window.changeQty = function (index, change) {
         var cart = getCart();
         cart[index].quantity = cart[index].quantity + change;
@@ -272,7 +309,7 @@ window.onload = function () {
     };
 
     // ==============================
-    // 8. CHECKOUT PAGE - SUMMARY
+    // 10. CHECKOUT - ORDER SUMMARY
     // ==============================
     var checkoutSummary = document.getElementById("checkout-summary");
     if (checkoutSummary) {
@@ -304,7 +341,97 @@ window.onload = function () {
     }
 
     // ==============================
-    // 9. FORM VALIDATION - ENQUIRY
+    // 11. DELIVERY / COLLECTION TOGGLE (Option C)
+    // ==============================
+    var deliveryRadios = document.getElementsByName("fulfilment");
+    var addressBox = document.getElementById("delivery-address-box");
+    var collectionBox = document.getElementById("collection-info");
+    var timeLabel = document.getElementById("order-time-label");
+
+    if (deliveryRadios.length > 0 && addressBox && collectionBox && timeLabel) {
+        for (var r = 0; r < deliveryRadios.length; r++) {
+            deliveryRadios[r].onchange = function () {
+                if (this.value === "delivery") {
+                    addressBox.style.display = "block";
+                    collectionBox.style.display = "none";
+                    timeLabel.innerHTML = "Preferred Delivery Time:";
+                } else {
+                    addressBox.style.display = "none";
+                    collectionBox.style.display = "block";
+                    timeLabel.innerHTML = "Preferred Pick-up Time:";
+                }
+            };
+        }
+    }
+
+    // ==============================
+    // 12. TIME RESTRICTION (shared field)
+    // ==============================
+    var orderTime = document.getElementById("order-time");
+    var today = new Date().getDay();
+
+    if (orderTime) {
+        if (today === 0) {
+            orderTime.disabled = true;
+        } else if (today >= 1 && today <= 5) {
+            orderTime.min = "06:00";
+            orderTime.max = "18:00";
+        } else if (today === 6) {
+            orderTime.min = "07:00";
+            orderTime.max = "14:00";
+        }
+    }
+
+    // ==============================
+    // 12b. REAL-TIME TIME VALIDATION
+    // ==============================
+    var orderTimeInput = document.getElementById("order-time");
+    var orderTimeError = document.getElementById("order-time-error");
+
+    if (orderTimeInput && orderTimeError) {
+        orderTimeInput.onchange = checkTime;
+        orderTimeInput.oninput = checkTime;
+    }
+
+    function checkTime() {
+        if (!orderTimeInput || !orderTimeError) return;
+
+        var time = orderTimeInput.value;
+        var day = new Date().getDay();
+        var errorMessage = "";
+
+        if (time !== "") {
+            if (day === 0) {
+                errorMessage = "We are closed on Sundays. Please choose another day.";
+            } else if (day >= 1 && day <= 5) {
+                if (time < "06:00") {
+                    errorMessage = "We open at 06:00 on weekdays. Please choose a later time.";
+                } else if (time > "18:00") {
+                    errorMessage = "We close at 18:00 on weekdays. Please choose an earlier time.";
+                }
+            } else if (day === 6) {
+                if (time < "07:00") {
+                    errorMessage = "We open at 07:00 on Saturdays. Please choose a later time.";
+                } else if (time > "14:00") {
+                    errorMessage = "We close at 14:00 on Saturdays. Please choose an earlier time.";
+                }
+            }
+        }
+
+        if (errorMessage !== "") {
+            orderTimeInput.value = "";
+            orderTimeInput.style.borderColor = "red";
+            orderTimeError.innerHTML = errorMessage;
+            orderTimeError.style.display = "block";
+        } else {
+            orderTimeInput.style.borderColor = "";
+            orderTimeError.innerHTML = "";
+            orderTimeError.style.display = "none";
+        }
+    }
+
+    // ==============================
+    // 13. FORM VALIDATION - ENQUIRY
     // ==============================
     var enquiryForm = document.getElementById("enquiry-form");
     if (enquiryForm) {
@@ -339,7 +466,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // 10. FORM VALIDATION - CONTACT
+    // 14. FORM VALIDATION - CONTACT
     // ==============================
     var contactForm = document.getElementById("contact-form");
     if (contactForm) {
@@ -380,7 +507,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // 11. FORM VALIDATION - CHECKOUT
+    // 15. FORM VALIDATION - CHECKOUT
     // ==============================
     var checkoutForm = document.getElementById("checkout-form");
     if (checkoutForm) {
@@ -407,14 +534,52 @@ window.onload = function () {
                 isValid = false;
             }
 
-            var address = document.getElementById("address").value;
-            if (address.length < 5) {
-                showError("address", "Please enter your delivery address.");
+            var fulfilment = "delivery";
+            var radios = document.getElementsByName("fulfilment");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    fulfilment = radios[i].value;
+                }
+            }
+
+            if (fulfilment === "delivery") {
+                var address = document.getElementById("address").value;
+                if (address.length < 5) {
+                    showError("address", "Please enter your delivery address.");
+                    isValid = false;
+                }
+            }
+
+            var time = document.getElementById("order-time").value;
+            if (time === "") {
+                if (fulfilment === "delivery") {
+                    showError("order-time", "Please choose a delivery time.");
+                } else {
+                    showError("order-time", "Please choose a pick-up time.");
+                }
                 isValid = false;
+            } else {
+                var day = new Date().getDay();
+                if (day === 0) {
+                    showError("order-time", "We are closed on Sundays.");
+                    isValid = false;
+                } else if (day >= 1 && day <= 5 && (time < "06:00" || time > "18:00")) {
+                    showError("order-time", "Mon–Fri times must be between 06:00 and 18:00.");
+                    isValid = false;
+                } else if (day === 6 && (time < "07:00" || time > "14:00")) {
+                    showError("order-time", "Saturday times must be between 07:00 and 14:00.");
+                    isValid = false;
+                }
             }
 
             if (isValid) {
-                alert("Thank you, " + name + "! Your order has been placed. We will contact you soon.");
+                var message = "";
+                if (fulfilment === "delivery") {
+                    message = "Thank you, " + name + "! Your order has been placed for DELIVERY. We will contact you soon.";
+                } else {
+                    message = "Thank you, " + name + "! Your order is ready for COLLECTION. See you at the bakery!";
+                }
+                alert(message);
                 localStorage.removeItem("artisanCart");
                 window.location.href = "index.html";
             }
@@ -422,7 +587,7 @@ window.onload = function () {
     }
 
     // ==============================
-    // HELPER FUNCTIONS
+    // 16. HELPER FUNCTIONS
     // ==============================
     function showError(fieldId, errorMessage) {
         var input = document.getElementById(fieldId);
@@ -452,23 +617,8 @@ window.onload = function () {
     }
 
     // ==============================
-    // 12. UPDATE CART COUNT ON LOAD
+    // 17. UPDATE CART COUNT ON LOAD
     // ==============================
     updateCartCount();
-
-        // ==============================
-    // DROPDOWN MENU TOGGLE (mobile)
-    // ==============================
-    var dropdowns = document.getElementsByClassName("dropdown");
-    for (var d = 0; d < dropdowns.length; d++) {
-        var link = dropdowns[d].querySelector("a");
-        link.onclick = function (e) {
-            // Only toggle on mobile
-            if (window.innerWidth <= 700) {
-                e.preventDefault();
-                this.parentElement.classList.toggle("open");
-            }
-        };
-    }
 
 };
