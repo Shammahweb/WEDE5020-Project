@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastries – The Artisan Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="nav-brand">
+            <a href="index.html" class="logo-link">
+                <img src="images/artisan-bakery-logo.jpg" alt="The Artisan Bakery Logo" width="100" height="100">
+            </a>
+            <h1 class="site-title">The Artisan Bakery</h1>
+        </div>
+
+        <button class="nav-toggle" id="menu-button" aria-label="Toggle navigation">☰</button>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="products.html">Products ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="breads.html">Breads</a></li>
+                        <li><a href="pastries.html">Pastries</a></li>
+                        <li><a href="cakes.html">Cakes</a></li>
+                    </ul>
+                </li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Pastries</h2>
+        <p><a href="products.html">← Back to Products</a></p>
+
+        <input type="text" id="product-search" class="search-bar" placeholder="Search pastries...">
+
+        <section class="product-category">
+            <ul>
+                <li>
+                    <strong>Croissant</strong> – R28<br>
+                    <img src="images/croissant.jpg" alt="Croissant">
+                    <button class="add-cart-btn" data-name="Croissant" data-price="28">Add to Cart</button>
+                </li>
+                <li>
+                    <strong>Pain au Chocolate</strong> – R32<br>
+                    <img src="images/pain au chocolate.jpg" alt="Pain au Chocolate">
+                    <button class="add-cart-btn" data-name="Pain au Chocolate" data-price="32">Add to Cart</button>
+                </li>
+                <li>
+                    <strong>Danish</strong> – R22<br>
+                    <img src="images/danish (fruit).jpg" alt="Danish">
+                    <button class="add-cart-btn" data-name="Danish" data-price="22">Add to Cart</button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Artisan Bakery. All rights reserved.</p>
+    </footer>
+
+    <script src="js/specials.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
