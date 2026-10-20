@@ -15,6 +15,7 @@
 | 2026-09-17 | v2.0    | All 5 pages completed                               |
 | 2026-09-20 | v2.1    | Part 2 submitted, feedback received                 |
 | 2026-10-03 | v3.0    | Part 3 started – JavaScript and e-commerce added    |
+| 2026-10-16 | v3.0 | Website deployment |
 
 ---
 
@@ -128,7 +129,7 @@
 
 ---
 
-## v3.0 – Part 3 JavaScript and E-commerce (2026-10-03)
+## v3.0 – Part 3 JavaScript and E-commerce (2026-10-20)
 
 **Added:**
 - Created js/script.js with all interactivity
@@ -145,6 +146,7 @@
 - Created robots.txt for search engines
 - Created sitemap.xml for search engines
 - Added proper Harvard Anglia references to README
+- Added card payment system to script.js
 
 **Changed:**
 - Made all images responsive (max-width: 100%)
@@ -164,8 +166,8 @@
 
 ## Current File Structure
 
-**Last updated:** 2026-09-17
-**Version:** v2.0
+**Last updated:** 2026-09-20
+**Version:** v3.0
 **Project root:** `The-Artisan-Bakery/`
 
 ### Directory Tree
@@ -190,6 +192,7 @@ The-Artisan-Bakery/
 │
 ├── js/
 │ └── script.js All JavaScript code
+│ └── specials.js All specials on Index
 │
 └── images/
 ├── artisan-bakery-logo.jpg
@@ -220,7 +223,6 @@ The-Artisan-Bakery/
 
 | Issue                                 | File     | Priority |
 |---------------------------------------|----------|----------|
-| Mobile responsiveness not fully tested| All pages| Medium   |
 | Final proofread before submission     | All pages| Medium   |
 
 ### Next Steps
@@ -235,4 +237,4 @@ The-Artisan-Bakery/
 **Prepared by:** Nanga Shammah Sadiki
 **Student Number:** ST10490123
 **Subject:** Web Development (WEDE5020)
-**Last updated:** 2026-10-03
+**Last updated:** 2026-10-20
