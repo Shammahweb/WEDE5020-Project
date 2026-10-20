@@ -741,3 +741,25 @@ body::before {
         form { padding: 1rem; }
         .product-category li { width: 140px; }
     }
+
+    /* ===== PAYMENT SECTION ===== */
+    #card-details {
+        background: #FFF8F2;
+        padding: 1rem 1.2rem;
+        border-radius: 8px;
+        border-left: 4px solid #714435;
+        margin: 1rem 0 1.5rem;
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    #card-details label {
+        margin-top: 0.8rem;
+        display: block;
+        font-weight: bold;
+        color: #3E2723;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
