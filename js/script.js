@@ -572,14 +572,52 @@ window.onload = function () {
                 }
             }
 
-            if (isValid) {
-                var message = "";
-                if (fulfilment === "delivery") {
-                    message = "Thank you, " + name + "! Your order has been placed for DELIVERY. We will contact you soon.";
-                } else {
-                    message = "Thank you, " + name + "! Your order is ready for COLLECTION. See you at the bakery!";
+            // ===== Check card details if card was chosen =====
+            var payment = "cash";
+            var payRadios = document.getElementsByName("payment");
+            for (var pi = 0; pi < payRadios.length; pi++) {
+                if (payRadios[pi].checked) {
+                    payment = payRadios[pi].value;
                 }
-                alert(message);
+            }
+
+            if (payment === "card") {
+                var cardName = document.getElementById("card-name").value;
+                if (cardName.length < 2) {
+                    showError("card-name", "Please enter the name on the card.");
+                    isValid = false;
+                }
+
+                var cardNum = document.getElementById("card-number").value.replace(/\s/g, "");
+                if (cardNum.length !== 16 || isNaN(cardNum)) {
+                    showError("card-number", "Please enter a valid 16-digit card number.");
+                    isValid = false;
+                }
+
+                var expiry = document.getElementById("card-expiry").value;
+                if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+                    showError("card-expiry", "Please use the format MM/YY.");
+                    isValid = false;
+                } else {
+                    var month = parseInt(expiry.substring(0, 2));
+                    if (month < 1 || month > 12) {
+                        showError("card-expiry", "Month must be between 01 and 12.");
+                        isValid = false;
+                    }
+                }
+
+                var cvv = document.getElementById("card-cvv").value;
+                if (cvv.length < 3 || cvv.length > 4 || isNaN(cvv)) {
+                    showError("card-cvv", "Please enter a valid 3 or 4 digit CVV.");
+                    isValid = false;
+                }
+            }
+
+            if (isValid) {
+                var payText = (payment === "card") ? "Payment received by card." : "You will pay in cash on delivery/collection.";
+                var fulfilText = (fulfilment === "delivery") ? "delivered" : "ready for collection";
+
+                alert("Thank you, " + name + "!\n\nYour order is " + fulfilText + ".\n" + payText);
                 localStorage.removeItem("artisanCart");
                 window.location.href = "index.html";
             }
@@ -620,5 +658,54 @@ window.onload = function () {
     // 17. UPDATE CART COUNT ON LOAD
     // ==============================
     updateCartCount();
+
+    // ==============================
+    // PAYMENT METHOD TOGGLE
+    // ==============================
+
+    var paymentRadios = document.getElementsByName("payment");
+    var cardDetails = document.getElementById("card-details");
+
+    if (paymentRadios.length > 0 && cardDetails) {
+        for (var pr = 0; pr < paymentRadios.length; pr++) {
+            paymentRadios[pr].onchange = function () {
+                if (this.value === "card") {
+                    cardDetails.style.display = "block";
+                } else {
+                    cardDetails.style.display = "none";
+                }
+            };
+        }
+    }
+
+    // ==============================
+    // CARD NUMBER FORMATTING
+    // ==============================
+
+    var cardNumberInput = document.getElementById("card-number");
+    if (cardNumberInput) {
+        cardNumberInput.oninput = function () {
+            // Remove anything that isn't a digit
+            var digits = this.value.replace(/\D/g, "");
+            // Limit to 16 digits
+            digits = digits.substring(0, 16);
+            // Add a space every 4 digits
+            var formatted = digits.replace(/(\d{4})(?=\d)/g, "$1 ");
+            this.value = formatted;
+        };
+    }
+
+    var cardExpiryInput = document.getElementById("card-expiry");
+    if (cardExpiryInput) {
+        cardExpiryInput.oninput = function () {
+            var digits = this.value.replace(/\D/g, "");
+            digits = digits.substring(0, 4);
+            if (digits.length >= 3) {
+                this.value = digits.substring(0, 2) + "/" + digits.substring(2);
+            } else {
+                this.value = digits;
+            }
+        };
+    }
 
 };
