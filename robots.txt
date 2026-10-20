@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /js/
 
-Sitemap: https://your-site.netlify.app/sitemap.xml
+Sitemap: https://theartisanbakery.netlify.app/sitemap.xml
