@@ -87,6 +87,39 @@
             <input type="tel" id="phone" name="phone" required>
             <span class="error-msg" id="phone-error"></span>
 
+            <h3>Payment Method</h3>
+
+                <div class="delivery-options">
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="cash" checked>
+                        <span>Cash on Delivery / Collection</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="card">
+                        <span>Card Payment</span>
+                    </label>
+                </div>
+
+                <!-- Card details - only shown when Card is selected -->
+                <div id="card-details" style="display: none;">
+                    <label for="card-name">Name on Card:</label>
+                    <input type="text" id="card-name" name="card-name" placeholder="John Smith">
+                    <span class="error-msg" id="card-name-error"></span>
+
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" maxlength="19" placeholder="1234 5678 9012 3456">
+                    <span class="error-msg" id="card-number-error"></span>
+
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" maxlength="5" placeholder="MM/YY">
+                    <span class="error-msg" id="card-expiry-error"></span>
+
+                    <label for="card-cvv">CVV:</label>
+                    <input type="text" id="card-cvv" name="card-cvv" maxlength="4" placeholder="123">
+                    <span class="error-msg" id="card-cvv-error"></span>
+                </div>
+
             <button type="submit">Place Order</button>
 
         </form>
