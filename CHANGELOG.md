@@ -147,12 +147,15 @@
 - Created sitemap.xml for search engines
 - Added proper Harvard Anglia references to README
 - Added card payment system to script.js
+- Added a receipt page after checkout
+- Added showToast in script.js
 
 **Changed:**
 - Made all images responsive (max-width: 100%)
 - Fixed media queries for iPhone screens (375px)
 - Updated README with proper structure
-- Updated changelog with detailed entries for every version
+- Updated changelog with detailed entries for every     version
+- Updated navigation menu to show hamburger on mobile and pill layout PC's(Tablets)
 
 **Fixed:**
 - Fixed references formatting
