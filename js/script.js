@@ -62,7 +62,7 @@ window.onload = function () {
                 var name = this.getAttribute("data-name");
                 var price = parseFloat(this.getAttribute("data-price"));
                 addToCart(name, price);
-                alert(name + " has been added to your cart!");
+                showToast(name + " has been added to your cart!");
             };
         }
     }
@@ -107,15 +107,19 @@ window.onload = function () {
     }
 
     // ==============================
-    // 5. DROPDOWN TOGGLE
+    // 4. DROPDOWN TOGGLE (Mobile Only)
     // ==============================
     var dropdowns = document.getElementsByClassName("dropdown");
     for (var d = 0; d < dropdowns.length; d++) {
         var dropLink = dropdowns[d].querySelector("a");
+        
         dropLink.onclick = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.parentElement.classList.toggle("open");
+            // Only run this click logic on mobile (screens smaller than 900px)
+            if (window.innerWidth < 900) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.parentElement.classList.toggle("open");
+            }
         };
     }
 
@@ -188,7 +192,7 @@ window.onload = function () {
             var name = this.getAttribute("data-name");
             var price = parseFloat(this.getAttribute("data-price"));
             addToCart(name, price);
-            alert(name + " has been added to your cart!");
+            showToast(name + " has been added to your cart!");
         };
     }
 
@@ -613,13 +617,43 @@ window.onload = function () {
                 }
             }
 
+            // Submit if all valid
             if (isValid) {
-                var payText = (payment === "card") ? "Payment received by card." : "You will pay in cash on delivery/collection.";
-                var fulfilText = (fulfilment === "delivery") ? "delivered" : "ready for collection";
+                
+                // 1. Generate Order Number and Date
+                var orderNumber = "ORD-" + Math.floor(100000 + Math.random() * 900000);
+                var date = new Date().toLocaleString();
 
-                alert("Thank you, " + name + "!\n\nYour order is " + fulfilText + ".\n" + payText);
+                // 2. Calculate Total
+                var cart = getCart();
+                var total = 0;
+                for (var c = 0; c < cart.length; c++) {
+                    total += (cart[c].price * cart[c].quantity);
+                }
+
+                // 3. Create the order object
+                var orderData = {
+                    orderNumber: orderNumber,
+                    date: date,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    fulfilment: fulfilment,
+                    address: (fulfilment === "delivery") ? document.getElementById("address").value : "N/A",
+                    time: time,
+                    payment: payment,
+                    cart: cart,
+                    total: total
+                };
+
+                // 4. Save to localStorage
+                localStorage.setItem("lastOrder", JSON.stringify(orderData));
+
+                // 5. Clear the cart
                 localStorage.removeItem("artisanCart");
-                window.location.href = "index.html";
+
+                // 6. Redirect to receipt page
+                window.location.href = "receipt.html";
             }
         };
     }
@@ -706,6 +740,96 @@ window.onload = function () {
                 this.value = digits;
             }
         };
+    }
+
+    // ==============================
+    // 18. GENERATE RECEIPT PAGE
+    // ==============================
+    var receiptContainer = document.getElementById("receipt-container");
+    if (receiptContainer) {
+        var orderData = localStorage.getItem("lastOrder");
+        
+        if (orderData) {
+            var order = JSON.parse(orderData);
+            var html = "";
+
+            html += "<h2 style='text-align:center; border-bottom:none; margin-bottom:0;'>Order Receipt</h2>";
+            html += "<p style='text-align:center; color:#666; margin-bottom: 1.5rem;'>Thank you for your order!</p>";
+            
+            html += "<div style='background:#FFF8F2; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #FFC107;'>";
+            html += "<p><strong>Order Number:</strong> " + order.orderNumber + "</p>";
+            html += "<p><strong>Date:</strong> " + order.date + "</p>";
+            html += "<p><strong>Name:</strong> " + order.name + "</p>";
+            html += "<p><strong>Method:</strong> " + order.fulfilment.toUpperCase() + "</p>";
+            
+            if (order.fulfilment === "delivery") {
+                html += "<p><strong>Address:</strong> " + order.address + "</p>";
+            }
+            
+            html += "<p><strong>Time:</strong> " + order.time + "</p>";
+            html += "<p><strong>Payment:</strong> " + order.payment.toUpperCase() + "</p>";
+            html += "</div>";
+
+            html += "<h3>Items Ordered</h3>";
+            html += "<table style='width:100%; border-collapse:collapse; margin-bottom:1.5rem;'>";
+            html += "<tr style='border-bottom: 2px solid #eee; text-align:left;'><th>Qty</th><th>Item</th><th style='text-align:right;'>Price</th></tr>";
+            
+            for (var i = 0; i < order.cart.length; i++) {
+                var item = order.cart[i];
+                var sub = item.price * item.quantity;
+                html += "<tr style='border-bottom: 1px solid #eee;'>";
+                html += "<td style='padding: 0.5rem 0;'>" + item.quantity + "x</td>";
+                html += "<td>" + item.name + "</td>";
+                html += "<td style='text-align:right;'>R" + sub.toFixed(2) + "</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+
+            html += "<h3 style='text-align:right; color:#714435;'>Total Paid: R" + order.total.toFixed(2) + "</h3>";
+            
+            html += "<div style='text-align:center; margin-top: 2rem;'>";
+            html += "<a href='index.html' class='btn'>Return to Home</a>";
+            html += "</div>";
+
+            receiptContainer.innerHTML = html;
+        } else {
+            receiptContainer.innerHTML = "<h2>No order found</h2><p>Please place an order first.</p><div style='text-align:center; margin-top:20px;'><a href='products.html' class='btn'>Go to Products</a></div>";
+        }
+    }
+
+    // ==============================
+    // 19. CUSTOM TOAST NOTIFICATION
+    // ==============================
+    function showToast(message) {
+        // Create container if it doesn't exist
+        var container = document.getElementById("toast-container");
+        if (!container) {
+            container = document.createElement("div");
+            container.id = "toast-container";
+            document.body.appendChild(container);
+        }
+
+        // Create the toast element
+        var toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = message;
+        
+        container.appendChild(toast);
+
+        // Trigger the slide-in animation
+        setTimeout(function() {
+            toast.classList.add("show");
+        }, 10);
+
+        // Remove the toast after 3 seconds
+        setTimeout(function() {
+            toast.classList.remove("show");
+            setTimeout(function() {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 300); // Wait for fade out
+        }, 3000);
     }
 
 };
