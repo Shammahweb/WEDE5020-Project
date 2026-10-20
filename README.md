@@ -77,6 +77,7 @@ This is a 7-page website for The Artisan Bakery, a local small business that sel
 | Checkout page added | 2026-10-03 | Done |
 | SEO files created | 2026-10-03 | Done |
 | Documentation updated | 2026-10-03 | Done |
+| Website deployment on Netlify   | 2026-10-16 | Done |
 
 ## Sitemap
 
@@ -123,6 +124,7 @@ The-Artisan-Bakery/
 │
 ├── js/
 │ └── script.js
+│ └── specials.js
 │
 └── images/
 ├── artisan-bakery-logo.jpg
@@ -202,4 +204,4 @@ W3Schools. (2026). *HTML, CSS and JavaScript Tutorials*. Available at: https://w
 
 **Prepared by:** Nanga Shammah Sadiki
 **Student Number:** ST10490123
-**Last updated:** 2026-10-03
+**Last updated:** 2026-10-20
