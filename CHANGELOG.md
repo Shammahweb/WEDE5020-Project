@@ -129,7 +129,7 @@
 
 ---
 
-## v3.0 – Part 3 JavaScript and E-commerce (2026-10-20)
+## v3.0 – Part 3 JavaScript and E-commerce (2026-10-28)
 
 **Added:**
 - Created js/script.js with all interactivity
@@ -149,6 +149,7 @@
 - Added card payment system to script.js
 - Added a receipt page after checkout
 - Added showToast in script.js
+- Added blueberry muffin to specials.js
 
 **Changed:**
 - Made all images responsive (max-width: 100%)
@@ -162,6 +163,7 @@
 - Fixed file structure display (used code block)
 - Fixed timeline consistency
 - Fixed mobile navigation menu
+- Fixed iframe maps on contact page
 
 **Status:** Complete
 
@@ -169,7 +171,7 @@
 
 ## Current File Structure
 
-**Last updated:** 2026-09-20
+**Last updated:** 2026-09-28
 **Version:** v3.0
 **Project root:** `The-Artisan-Bakery/`
 
@@ -240,4 +242,4 @@ The-Artisan-Bakery/
 **Prepared by:** Nanga Shammah Sadiki
 **Student Number:** ST10490123
 **Subject:** Web Development (WEDE5020)
-**Last updated:** 2026-10-20
+**Last updated:** 2026-10-28

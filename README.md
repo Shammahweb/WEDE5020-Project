@@ -139,6 +139,7 @@ The-Artisan-Bakery/
 ├── celebration-cake.jpg
 ├── cheesecake.jpg
 └── carrot-cake.jpg
+└── blueberry muffin.jpg
 
 
 
@@ -204,4 +205,4 @@ W3Schools. (2026). *HTML, CSS and JavaScript Tutorials*. Available at: https://w
 
 **Prepared by:** Nanga Shammah Sadiki
 **Student Number:** ST10490123
-**Last updated:** 2026-10-20
+**Last updated:** 2026-10-28
