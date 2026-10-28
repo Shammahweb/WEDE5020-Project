@@ -20,5 +20,11 @@ var todaysSpecials = [
         price: 30,
         image: "images/chocolate brownie.jpg",
         description: "Rich and fudgy"
+    },
+    {
+        name: "blueberry muffin",
+        price: 35,
+        image: "images/blueberry muffin.jpg",
+        description: "Fluffy on the inside"
     }
 ];
