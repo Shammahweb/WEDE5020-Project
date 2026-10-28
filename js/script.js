@@ -16,7 +16,8 @@ window.onload = function () {
         "images/celebration cake.jpg",
         "images/pain au chocolate.jpg",
         "images/cheesecake.jpg",
-        "images/carrot cake.jpg"
+        "images/carrot cake.jpg",
+        "images/blueberry muffin.jpg"
     ];
 
     var bgIndex = 0;
